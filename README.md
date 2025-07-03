@@ -16,6 +16,9 @@
 Aplikacja front‑endowa napisana w Laravel 12, umożliwiająca zarządzanie „zwierzakami” przez interfejs REST API (np. [Swagger PetStore](https://petstore.swagger.io/)).  
 Umożliwia przeglądanie, filtrowanie, dodawanie, edytowanie i usuwanie wpisów o zwierzętach.
 
+## 📀 DEMO
+https://codeit24.pl/petstore/public
+
 ## 📋 Spis treści
 - [Wymagania](#-wymagania)  
 - [Instalacja](#-instalacja)  
