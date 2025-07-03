@@ -66,7 +66,7 @@ PETSTORE_BASE_URL=https://petstore.swagger.io/v2
 php artisan serve || http://localhost/petstore/public/
 
 ## 🗂️ Struktura
-app/
+``app/
 ├── Http/Controllers/PetController.php  # logika CRUD przez Http::client
 resources/
 ├── views/
@@ -78,7 +78,7 @@ routes/
 tests/
 ├── Feature/                            # testy integracyjne
 └── Unit/                               # testy jednostkowe
-public/                                 # zasoby front‑end
+public/                                 # zasoby front‑end``
 
 ## ✍️ Autor
 codeit24
