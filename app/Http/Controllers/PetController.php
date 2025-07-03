@@ -72,7 +72,7 @@ class PetController extends Controller
         $updatePet = Http::asForm()->post("{$this->baseUrl}/pet/{$id}", $data);
 
         if (! $updatePet->successful()) {
-            return redirect()->route('pet.edit', $id)->with('error', 'Nie udało się zaktualizować zwierzaka. Spróbuj ponownie.');
+            return redirect()->route('pet.update', $id)->with('error', 'Nie udało się zaktualizować zwierzaka. Spróbuj ponownie.');
         }
         return redirect()->route('dashboard')->with('success', 'Zwierzak ' . ($data['name'] ?? '') . ' zaktualizowany pomyślnie.');
     }
