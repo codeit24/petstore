@@ -62,25 +62,33 @@ DB_PASSWORD=yourPassword
 PETSTORE_BASE_URL=https://petstore.swagger.io/v2
 
 ## 🏃 Uruchomienie
-``command
+`command
 php artisan serve || http://localhost/petstore/public/
 
 ## 🗂️ Struktura
-``
-app/
+
+``app/
+
 ├── Http/Controllers/PetController.php  # logika CRUD przez Http::client
 
 resources/
+
 ├── views/
+
 │   ├── dashboard.blade.php             # lista zwierzaków
+
 │   ├── pet_form.blade.php              # formularz dodawania
+
 │   └── pet_update.blade.php            # formularz edycji
 
 routes/
+
 └── web.php                             # definicja tras
 
 tests/
+
 ├── Feature/                            # testy integracyjne
+
 └── Unit/                               # testy jednostkowe
 
 public/                                 # zasoby front‑end``
