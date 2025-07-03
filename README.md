@@ -49,16 +49,22 @@ npm run dev
 W pliku .env uzupełnij:
 
 APP_NAME="PetStore"
+
 APP_URL=http://localhost:8000
 
 DB_CONNECTION=mariadb
+
 DB_HOST=127.0.0.1
+
 DB_PORT=3306
+
 DB_DATABASE=petstore
+
 DB_USERNAME=yourUserName
+
 DB_PASSWORD=yourPassword
 
-# Adres bazowego API PetStore (domyślnie Swagger PetStore)
+### Adres bazowego API PetStore (domyślnie Swagger PetStore)
 PETSTORE_BASE_URL=https://petstore.swagger.io/v2
 
 ## 🏃 Uruchomienie
