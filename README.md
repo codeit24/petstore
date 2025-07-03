@@ -69,6 +69,7 @@ PETSTORE_BASE_URL=https://petstore.swagger.io/v2
 
 ## 🏃 Uruchomienie
 `command
+
 php artisan serve || http://localhost/petstore/public/
 
 ## 🗂️ Struktura
