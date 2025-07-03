@@ -6,8 +6,22 @@
     </x-slot>
 
     <div class="py-12">
-        @if(!empty($error))
-            <div class="alert alert-danger">{{ $error }}</div>
+        @if(session('error'))
+        <div class="container">
+            <div class="row">
+                <div class="col-6">
+                    <div class="alert alert-danger">{{ session('error') }}</div>
+                </div>
+            </div>
+        </div>
+        @elseif(session('success'))
+        <div class="container">
+            <div class="row">
+                <div class="col-6">
+                    <div class="alert alert-success">{{ session('success') }}</div>
+                </div>
+            </div>
+        </div>
         @endif
 
         <div class="container py-4 bg-dark text-light">

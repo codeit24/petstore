@@ -17,7 +17,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/dashboard/add-pet', [PetController::class, 'createPet'])->name('pet.form');
     Route::post('/dashboard/store-pet', [PetController::class, 'storePet'])->name('pet.store');
     Route::get('/dashboard/update-pet-form/{id}', [PetController::class, 'updatePetForm'])->name('pet.update.form');
-    Route::put('/dashboard/update-pet/{id}', [PetController::class, 'updatePet'])->name('pet.update');
+    Route::post('/dashboard/update-pet/{id}', [PetController::class, 'updatePet'])->name('pet.update');
     Route::delete('/dashboard/delete-pet/{id}', [PetController::class, 'destroyPet'])->name('pet.destroy');
 
     // Profile management routes

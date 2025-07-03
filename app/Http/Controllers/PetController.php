@@ -23,45 +23,63 @@ class PetController extends Controller
 
     public function createPet()
     {
-        return view('pet.form');
+        return view('pet_form');
     }
 
     public function storePet(Request $request)
     {
         $data = $request->validate([
-            'id'     => 'required|integer',
-            'name'   => 'required|string',
+            'name'   => 'required|string|max:255',
             'status' => 'required|in:available,pending,sold',
+        ], [
+            'name.required'   => 'Pole "Imię" jest wymagane.',
+            'name.max'        => 'Imię może mieć maksymalnie :max znaków.',
+            'status.required' => 'Wybierz proszę status.',
+            'status.in'       => 'Nieprawidłowy status. Wybierz z listy.',
         ]);
 
-        Http::post("{$this->baseUrl}/pet", $data);
+        $addPet = Http::post("{$this->baseUrl}/pet", $data);
 
-        return redirect()->route('pet.store')->with('success', 'Pet added');
+        if (!$addPet->ok()) {
+            return redirect()->route('pet.form')->with('error', 'Nie udało się dodać zwierzaka. Spróbuj ponownie.');
+        }
+        return redirect()->route('dashboard')->with('success', 'Zwierzak ' . $data['name'] . ' dodany pomyślnie');
     }
 
     public function updatePetForm($id)
     {
         $response = Http::get("{$this->baseUrl}/pet/{$id}");
+        if (!$response->ok()) {
+            return redirect()->route('dashboard')->with('error', 'Zwierzak o ID: ' . $id . ' już nie istnieje.');
+        }
         $pet = $response->json();
 
-        return view('pet.update', compact('pet'));
+        return view('pet_update', compact('pet'));
     }
 
     public function updatePet(Request $request, $id)
     {
         $data = $request->validate([
-            'id'     => 'required|integer',
-            'name'   => 'required|string',
+            'name'   => 'required|string|max:255',
             'status' => 'required|in:available,pending,sold',
+        ], [
+            'name.required'   => 'Pole "Imię" jest wymagane.',
+            'name.max'        => 'Imię może mieć maksymalnie :max znaków.',
+            'status.required' => 'Wybierz proszę status.',
+            'status.in'       => 'Nieprawidłowy status. Wybierz z listy.',
         ]);
 
-        Http::put("{$this->baseUrl}/pet", $data);
-        return redirect()->route('dashboard')->with('success', 'Pet updated');
+        $updatePet = Http::asForm()->post("{$this->baseUrl}/pet/{$id}", $data);
+
+        if (! $updatePet->successful()) {
+            return redirect()->route('pet.edit', $id)->with('error', 'Nie udało się zaktualizować zwierzaka. Spróbuj ponownie.');
+        }
+        return redirect()->route('dashboard')->with('success', 'Zwierzak ' . ($data['name'] ?? '') . ' zaktualizowany pomyślnie.');
     }
 
     public function destroyPet($id)
     {
-        Http::delete("{$this->baseUrl}/pet/{$id}");
-        return redirect()->route('dashboard')->with('success', 'Pet deleted');
+        $response = Http::delete("{$this->baseUrl}/pet/{$id}");
+        return redirect()->route('dashboard')->with('success', 'Zwierzak z ID:' . $id . ' usunięty pomyślnie.');
     }
 }
