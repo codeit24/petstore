@@ -85,12 +85,6 @@ routes/
 
 └── web.php                             # definicja tras
 
-tests/
-
-├── Feature/                            # testy integracyjne
-
-└── Unit/                               # testy jednostkowe
-
 public/                                 # zasoby front‑end``
 
 ## ✍️ Autor
